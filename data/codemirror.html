@@ -1,0 +1,76 @@
+<html>
+<head>
+	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="codemirror/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="codemirror/lib/codemirror.js"></script>
+    <script type="text/javascript" src="codemirror/mode/bookmark/bookmark.js"></script>
+    <script type="text/javascript" src="codemirror/addon/hint/show-hint.js"></script>
+    <script type="text/javascript" src="codemirror/addon/hint/bookmark-hint.js"></script>
+    <script type="text/javascript">
+    var editor;
+    var completed = false;
+    var root = {
+    	name: "root",
+    	children: [{
+    		name: "node1"
+    	},{
+    		name: "node2"
+    	}]
+    };
+    function createEditor(){
+    	editor =  CodeMirror.fromTextArea(document.getElementById("command"), {
+                lineNumbers: true,
+                mode: "bookmark",
+                lineWrapping: true
+              });
+
+    	editor.on("cursorActivity", function(ed){
+	        if(completed){
+	          completed = false;
+	        }else{
+				if(CodeMirror.bookmarkHint_isPrevFolder(editor)){
+					setTimeout(function(){
+						CodeMirror.showHint(ed, CodeMirror.bookmarkHint, {root: root, completeSingle: false}); 
+					}, 10);  
+				}else{
+					CodeMirror.showHint(ed, CodeMirror.bookmarkHint, {root: root, completeSingle: false}); 
+				}
+	        }
+	    });
+
+	    editor.on("endCompletion", function(ed){
+	    	completed = true;
+	    });
+	      
+	     
+	    $("body").keypress(function(event){
+	        if(event.which == 13 && event.ctrlKey){
+	        	console.log('panel.done', editor.getValue());
+	        }
+
+	        if(event.which == 99 && event.ctrlKey){
+	            console.log('panel.hide');
+	        }
+	    });
+
+	    //   editor.on("change", function(editor, event){
+	    //     //console.log("change");
+	    //     //if(event.which == 13 && event.ctrlKey){
+	    //     //    
+	    //     //}else{
+	    //         self.port.emit('panel.change', editor.getValue());
+	    //     //}
+	    // });
+    }
+	$(function(){
+		createEditor();
+	});
+    </script>
+</head>
+<body>
+	<textarea rows="8" cols="30" id="command"></textarea>
+</body>
+</html>
