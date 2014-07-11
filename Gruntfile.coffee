@@ -1,3 +1,4 @@
+#Example: https://github.com/fczbkk/Savedeo-Extension/blob/master/Gruntfile.coffee
 module.exports = (grunt)->
   firefoxStableVersion = "1.16"
   grunt.initConfig
