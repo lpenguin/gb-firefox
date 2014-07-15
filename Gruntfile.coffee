@@ -41,10 +41,17 @@ module.exports = (grunt)->
           atStart: true
         files: ['firefox/coffee/*.coffee']
         tasks: ['dev']
-          
+    bowercopy:
+      firefox:
+        options:
+          destPrefix: 'firefox/data/bower/'
+        files:
+          'css/': 'pure/pure.css'
+
   grunt.loadNpmTasks 'grunt-mozilla-addon-sdk'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks('grunt-bowercopy')
 
   grunt.registerTask 'default', ['watch:default']
   grunt.registerTask 'dev', [

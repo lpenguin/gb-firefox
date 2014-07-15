@@ -1,0 +1,6 @@
+{
+  "name": "gb-plugins",
+  "devDependencies":{
+    "pure": "*"
+  }
+}

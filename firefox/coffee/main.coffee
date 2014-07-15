@@ -6,11 +6,10 @@ self = require 'sdk/self'
 panel = Panel
   contentURL: self.data.url 'panel_main.html'
 
-button = ActionButton 
+button = ActionButton
   id: 'main-button'
   label: 'Activate menu'
-  icon: 
+  icon:
     '32': './icons/bookmark-32.png'
   onClick: (state) ->
     panel.show {position: button}
-
