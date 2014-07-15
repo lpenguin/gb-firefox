@@ -32,29 +32,45 @@ module.exports = (grunt)->
           bare: true
         files:
           # Firefox
-          'firefox/lib/main.js' : [
-            'firefox/coffee/main.coffee'
+          'firefox/package/lib/main.js' : [
+            'firefox/src/coffee/main.coffee'
           ]
-          'firefox/data/js/panel.js': [
-            'firefox/coffee/data-src/panel.coffee'
+          'firefox/package/data/js/panel.js': [
+            'firefox/src/coffee/panel.coffee'
           ]
     watch:
       default:
         options:
           atStart: true
-        files: ['firefox/coffee/*/*.coffee']
+        files: ['firefox/src/coffee/*.coffee']
         tasks: ['dev']
+
+    copy:
+      firefox:
+        files:[
+          { src: 'firefox/src/layout/*', dest: 'firefox/package/data/', expand: true,  filter: 'isFile'}
+          { src: 'firefox/src/css/*', dest: 'firefox/package/data/css/', expand: true,  filter: 'isFile'}
+          { src: 'firefox/src/images/*', dest: 'firefox/package/data/icons/', expand: true,  filter: 'isFile'}
+        ]
+
     bowercopy:
       firefox:
         options:
-          destPrefix: 'firefox/data/bower/'
+          destPrefix: 'firefox/package/data/'
         files:
           'css/': 'pure/pure.css'
 
   grunt.loadNpmTasks 'grunt-mozilla-addon-sdk'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-bowercopy')
+
+  grunt.registerTask 'firefox', [
+    'copy:firefox'
+    'bowercopy:firefox'
+    'coffee:default'
+  ]
 
   grunt.registerTask 'default', ['watch:default']
   grunt.registerTask 'dev', [
