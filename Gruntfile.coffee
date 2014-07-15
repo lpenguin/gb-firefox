@@ -35,11 +35,14 @@ module.exports = (grunt)->
           'firefox/lib/main.js' : [
             'firefox/coffee/main.coffee'
           ]
+          'firefox/data/js/panel.js': [
+            'firefox/coffee/data-src/panel.coffee'
+          ]
     watch:
       default:
         options:
           atStart: true
-        files: ['firefox/coffee/*.coffee']
+        files: ['firefox/coffee/*/*.coffee']
         tasks: ['dev']
     bowercopy:
       firefox:

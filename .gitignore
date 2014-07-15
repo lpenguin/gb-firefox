@@ -1,5 +1,6 @@
 node_modules/
 bower_components/
 firefox/data/bower
+firefox/data/js
 firefox/lib/
 tmp/
