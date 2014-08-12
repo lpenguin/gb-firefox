@@ -1,12 +1,17 @@
 class Port
-  constructor: (portObject, methods)->
+  constructor: (@portObject, methods)->
     for name, method of methods
-      portObject.on(name, method)
+      @portObject.on(name, method)
     @methods = methods
 
-  wrapper: () ->
+  wrapper: (methods) ->
     res = {}
-    for name, method of @methods
-      res[name] = (args) -> portObject.port.emit(name, args)
+    console.log methods
+    for name in methods
+      res[name] = (args) => @portObject.port.emit(name, args)
     res
-exports.Port = Port
+
+if exports?
+  exports.Port = Port
+else
+  window.Port = Port

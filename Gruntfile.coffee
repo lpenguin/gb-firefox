@@ -41,6 +41,9 @@ module.exports = (grunt)->
           'firefox/package/data/js/panel.js': [
             'firefox/src/coffee/panel.coffee'
           ]
+          'firefox/package/data/js/port.js': [
+            'firefox/src/coffee/port.coffee'
+          ]
     watch:
       default:
         options:
@@ -54,7 +57,7 @@ module.exports = (grunt)->
           { src: 'firefox/src/layout/*', dest: 'firefox/package/data/', filter: 'isFile', flatten: true, expand: true}
           { src: 'firefox/src/css/*', dest: 'firefox/package/data/css/',  filter: 'isFile', flatten: true, expand: true}
           { src: 'firefox/src/images/*', dest: 'firefox/package/data/icons/', filter: 'isFile', flatten: true, expand: true}
-          { src: 'firefox/src/package.json', dest: 'firefox/package/', filter: 'isFile', expand: true}
+          { src: 'firefox/src/package.json', dest: 'firefox/package/', filter: 'isFile', expand: true, flatten: true}
         ]
 
     bowercopy:
@@ -63,6 +66,7 @@ module.exports = (grunt)->
           destPrefix: 'firefox/package/data/'
         files:
           'css/': 'pure/pure.css'
+          'js/': 'prototype.js/dist/prototype.js'
 
   grunt.loadNpmTasks 'grunt-mozilla-addon-sdk'
   grunt.loadNpmTasks 'grunt-contrib-watch'
@@ -71,9 +75,9 @@ module.exports = (grunt)->
   grunt.loadNpmTasks('grunt-bowercopy')
 
   grunt.registerTask 'firefox', [
+    'coffee:default'
     'copy:firefox'
     'bowercopy:firefox'
-    'coffee:default'
     'mozilla-cfx'
   ]
 
