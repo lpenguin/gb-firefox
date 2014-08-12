@@ -1,7 +1,7 @@
 {ActionButton} = require "sdk/ui/button/action"
 {Panel} = require "sdk/panel"
 {Port} = require "port"
-
+tabs = require "sdk/tabs"
 self = require 'sdk/self'
 panel = Panel
   contentURL: self.data.url 'panel_main.html'
@@ -9,8 +9,8 @@ panel = Panel
 
 panelFacade = new Port panel, {
   show: ()->
-    console.log "Panel showed"
-    panelWrapper.init()
+    tab = tabs.activeTab
+    panelWrapper.init({name: tab.title, url: tab.url})
 }
 
 panelWrapper = panelFacade.wrapper(['init'])

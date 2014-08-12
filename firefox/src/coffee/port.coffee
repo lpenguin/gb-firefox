@@ -6,7 +6,6 @@ class Port
 
   wrapper: (methods) ->
     res = {}
-    console.log methods
     for name in methods
       res[name] = (args) => @portObject.port.emit(name, args)
     res
