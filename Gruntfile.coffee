@@ -1,7 +1,7 @@
 #Example: https://github.com/fczbkk/Savedeo-Extension/blob/master/Gruntfile.coffee
 module.exports = (grunt)->
   firefoxStableVersion = "1.16"
-  firefoxExtentionDir = 'firefox'
+  firefoxExtentionDir = 'firefox/package'
   firefoxExtentionDistDir = "#{firefoxExtentionDir}/build"
   grunt.initConfig
     debug: true
@@ -35,6 +35,9 @@ module.exports = (grunt)->
           'firefox/package/lib/main.js' : [
             'firefox/src/coffee/main.coffee'
           ]
+          'firefox/package/lib/port.js' : [
+            'firefox/src/coffee/port.coffee'
+          ]
           'firefox/package/data/js/panel.js': [
             'firefox/src/coffee/panel.coffee'
           ]
@@ -48,9 +51,10 @@ module.exports = (grunt)->
     copy:
       firefox:
         files:[
-          { src: 'firefox/src/layout/*', dest: 'firefox/package/data/', expand: true,  filter: 'isFile'}
-          { src: 'firefox/src/css/*', dest: 'firefox/package/data/css/', expand: true,  filter: 'isFile'}
-          { src: 'firefox/src/images/*', dest: 'firefox/package/data/icons/', expand: true,  filter: 'isFile'}
+          { src: 'firefox/src/layout/*', dest: 'firefox/package/data/', filter: 'isFile', flatten: true, expand: true}
+          { src: 'firefox/src/css/*', dest: 'firefox/package/data/css/',  filter: 'isFile', flatten: true, expand: true}
+          { src: 'firefox/src/images/*', dest: 'firefox/package/data/icons/', filter: 'isFile', flatten: true, expand: true}
+          { src: 'firefox/src/package.json', dest: 'firefox/package/', filter: 'isFile', expand: true}
         ]
 
     bowercopy:
@@ -70,6 +74,7 @@ module.exports = (grunt)->
     'copy:firefox'
     'bowercopy:firefox'
     'coffee:default'
+    'mozilla-cfx'
   ]
 
   grunt.registerTask 'default', ['watch:default']
