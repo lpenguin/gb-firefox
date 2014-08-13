@@ -66,7 +66,7 @@ module.exports = (grunt)->
           destPrefix: 'firefox/package/data/'
         files:
           'css/': 'pure/pure.css'
-          'js/': 'prototype.js/dist/prototype.js'
+          'js/': 'jquery/dist/jquery.js'
 
   grunt.loadNpmTasks 'grunt-mozilla-addon-sdk'
   grunt.loadNpmTasks 'grunt-contrib-watch'

@@ -5,15 +5,21 @@ tabs = require "sdk/tabs"
 self = require 'sdk/self'
 panel = Panel
   contentURL: self.data.url 'panel_main.html'
-  contentScriptFile: [ self.data.url('js/port.js'), self.data.url('js/prototype.js'), self.data.url('js/panel.js')]
+  contentScriptFile: [
+    self.data.url('js/port.js')
+    self.data.url('js/jquery.js')
+    self.data.url('js/panel.js')
+  ]
 
-panelFacade = new Port panel, {
+panelPort = new Port panel, ['init'], {
   show: ()->
+    console.log "external show"
     tab = tabs.activeTab
-    panelWrapper.init({name: tab.title, url: tab.url})
+    panelPort.init({name: tab.title, url: tab.url})
+  done: ({tags})->
+    console.log "TAGS: #{tags}"
 }
 
-panelWrapper = panelFacade.wrapper(['init'])
 
 button = ActionButton
   id: 'main-button'

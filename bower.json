@@ -2,6 +2,7 @@
   "name": "gb-plugins",
   "devDependencies":{
     "pure": "*",
-    "prototype.js": "*"
+    "prototype.js": "*",
+    "jquery": "*"
   }
 }
