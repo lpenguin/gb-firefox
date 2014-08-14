@@ -11,15 +11,14 @@ panel = Panel
     self.data.url('js/panel.js')
   ]
 
-panelPort = new Port panel, ['init'], {
-  show: ()->
-    console.log "external show"
-    tab = tabs.activeTab
-    panelPort.init({name: tab.title, url: tab.url})
+panelPort = new Port panel.port, ['init'], {
   done: ({tags})->
     console.log "TAGS: #{tags}"
 }
 
+panel.on 'show', ()->
+  tab = tabs.activeTab
+  panelPort.init({name: tab.title, url: tab.url})
 
 button = ActionButton
   id: 'main-button'

@@ -11,7 +11,6 @@ class Port
     console.log "wrapper"
 
     port = @portObject
-    port = @portObject.port unless port.emit?
 
     for name in @wrapperMethods
       console.log " adding wrapper method: #{name}"
