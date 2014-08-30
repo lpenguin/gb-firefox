@@ -1,8 +1,11 @@
 {ActionButton} = require "sdk/ui/button/action"
 {Panel} = require "sdk/panel"
 {Port} = require "port"
+Api = require "api"
 tabs = require "sdk/tabs"
 self = require 'sdk/self'
+
+console.log Api
 panel = Panel
   contentURL: self.data.url 'panel_main.html'
   contentScriptFile: [
@@ -12,8 +15,12 @@ panel = Panel
   ]
 
 panelPort = new Port panel.port, ['init'], {
-  done: ({tags})->
-    console.log "TAGS: #{tags}"
+  done: ({name, url, description, tags})->
+    (Api.addLink {name, url, description, tags}).execute
+      success: (res)->
+        console.log "success: #{res}"
+      error: (res)->
+        console.log "error: #{res.statusText}"
 }
 
 panel.on 'show', ()->

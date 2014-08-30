@@ -41,6 +41,9 @@ module.exports = (grunt)->
           'firefox/package/data/js/panel.js': [
             'firefox/src/coffee/panel.coffee'
           ]
+          'firefox/package/lib/api.js' : [
+            'firefox/src/coffee/api.coffee'
+          ]
           'firefox/package/data/js/port.js': [
             'firefox/src/coffee/port.coffee'
           ]
