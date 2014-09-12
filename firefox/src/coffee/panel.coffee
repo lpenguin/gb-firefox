@@ -5,13 +5,11 @@ describe = (e)->
 panel = new Port self.port, ['done'], {
   init: ({name, url})->
     $("#page-name").text name
-
+    $('#tags').focus()
     document.getElementById('main-form').onsubmit = () ->
       self.port.emit 'done', {
         tags: $('#tags').val().split(","),
-        description: "", 
-        url: url, 
-        name: name
+        description: ""
       }
       false
 }

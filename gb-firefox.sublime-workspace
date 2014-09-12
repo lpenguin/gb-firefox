@@ -1,0 +1,425 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"de",
+				"detectUp"
+			],
+			[
+				"dete",
+				"detectUp"
+			],
+			[
+				"dig",
+				"digDown"
+			],
+			[
+				"mo",
+				"modsIndex"
+			],
+			[
+				"l",
+				"left"
+			],
+			[
+				"rot",
+				"rotLeft"
+			],
+			[
+				"set",
+				"setPosition"
+			],
+			[
+				"are",
+				"area1"
+			],
+			[
+				"y",
+				"ymodsIndex"
+			],
+			[
+				"xmo",
+				"xmodsIndex"
+			],
+			[
+				"ma",
+				"math"
+			],
+			[
+				"pr",
+				"printArea"
+			],
+			[
+				"print",
+				"printArea"
+			],
+			[
+				"fun",
+				"function	function"
+			],
+			[
+				"cir",
+				"circleRendererPrefab"
+			],
+			[
+				"Cre",
+				"CreateRenderer"
+			],
+			[
+				"re",
+				"res"
+			],
+			[
+				"ac",
+				"activeRenderers"
+			],
+			[
+				"Rem",
+				"RemoveAt"
+			],
+			[
+				"CI",
+				"CircleExpandFinished"
+			],
+			[
+				"li",
+				"_lineRenderer"
+			],
+			[
+				"liw",
+				"lineWidth"
+			],
+			[
+				"lie",
+				"lineRenderer"
+			],
+			[
+				"Vec",
+				"Vector3	x, y, z"
+			],
+			[
+				"the",
+				"thetaScale"
+			],
+			[
+				"fo",
+				"float"
+			],
+			[
+				"ex",
+				"expandSpeed"
+			],
+			[
+				"e",
+				"enabled"
+			],
+			[
+				"Add",
+				"AddComponent	componentType"
+			],
+			[
+				"Line",
+				"LineRenderer"
+			],
+			[
+				"v",
+				"VisionImpact"
+			],
+			[
+				"sor",
+				"sortingLayer"
+			],
+			[
+				"GetC",
+				"GetComponent	type"
+			],
+			[
+				"De",
+				"Debug"
+			],
+			[
+				"so",
+				"sortingLayerName"
+			],
+			[
+				"font",
+				"font_options	setting"
+			],
+			[
+				"Move",
+				"MoveMode"
+			],
+			[
+				"Mo",
+				"MoveMode"
+			],
+			[
+				"mous",
+				"mousePosition"
+			],
+			[
+				"for",
+				"forward"
+			],
+			[
+				"pos",
+				"position"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 287.0,
+		"selected_items":
+		[
+			[
+				"file",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"paac in",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"wor",
+				"Show Scala Worksheet"
+			],
+			[
+				"scala",
+				"Show Scala Worksheet"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/nikita/Sources/gb-firefox"
+	],
+	"file_history":
+	[
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/Editor/LineRendererSortingLayersEditor.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Shaders/Vision2D/VIsionArea.shader",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/Visualizations/CircleRenderer.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Shaders/Vision2D/Blueprint.shader",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Shaders/Vision2D/Transparent2D.shader",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/2DVLS/Core/Light2D.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/AI/AI.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/AI/Reaction/Reaction.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/AI/Reaction/Impact.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/AI/Reaction/Vision/VisionReaction.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/AI/Reaction/Vision/VisionManager.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/AI/Reaction/Manager.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/AI/GuardAI.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/CharacterController2D/CharacterMotor2D.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/AI/Impact/Impact.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/CharacterController2D/test.scala (worksheet)",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/CharacterController2D/test.scala (worksheet) (worksheet)",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/CharacterController2D/test.scala",
+		"/Users/nikita/Library/Application Support/Sublime Text 3/Packages/User/Scala.sublime-settings",
+		"/Users/nikita/util/README.md",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/SortingLayerHack.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/Editor/MeshRendererSortingLayersEditor.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/Vision/FOV2DVisionCone.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/Editor/SortLayerRendererExtension.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/Editor/RendererLayer.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/Editor/RendererLayerEditor.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/AutoEnabler.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/CharacterController2D/MouseLook2D.cs",
+		"/Users/nikita/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/CharacterController2D/CharacterController2D.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/CameraMovement.cs",
+		"/Users/nikita/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scripts/Vision/FOV2DEyes.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Standard Assets/Character Controllers/Sources/Scripts/MouseLook.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Standard Assets/Character Controllers/Sources/Scripts/FPSInputController.js",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Standard Assets/Character Controllers/Sources/Scripts/CharacterMotor.js",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/lawgame.sublime-project",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Shaders/StencilArea.shader",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Shaders/StencilCutoff.shader",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Editor/Image Effects/SunShaftsEditor.js",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Standard Assets/Image Effects (Pro Only)/SepiaToneEffect.cs",
+		"/Users/nikita/Sources/Unity/lawgame-unity-git/Assets/Scenes.meta"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 96.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"detectUp",
+			"move",
+			"right",
+			"end",
+			"Off",
+			"Blend",
+			");\n",
+			";\n",
+			"List",
+			";);",
+			"sort",
+			"(){\n",
+			"player",
+			"mousePosition",
+			"controller",
+			"Move",
+			"ApplyInputVelocityChange",
+			"inputMo"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "gb-firefox.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"stencil",
+				"Shaders/StencilCutoff.shader"
+			],
+			[
+				"sten",
+				"Shaders/StencilArea.shader"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 273.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

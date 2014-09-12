@@ -33,11 +33,11 @@ class PostApiRequest extends ApiRequest
   _processRequest: (request) -> request.post()
 
 class AddLinkRequest extends PostApiRequest
-  constructor: ({name, url, tags, description})->
+  constructor: (link)->
     super
       method: "addLink"
-      params: {name, url, tags, description}
+      params: link
 
 
 
-exports.addLink = ({name, url, description, tags})-> (new AddLinkRequest {name, url, description, tags})
+exports.addLink = (link)-> (new AddLinkRequest link)

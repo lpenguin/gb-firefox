@@ -47,6 +47,9 @@ module.exports = (grunt)->
           'firefox/package/data/js/port.js': [
             'firefox/src/coffee/port.coffee'
           ]
+          'firefox/package/lib/models.js': [
+            'firefox/src/coffee/models.coffee'
+          ]
     watch:
       default:
         options:
