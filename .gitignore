@@ -4,3 +4,4 @@ firefox/package/data/
 firefox/package/lib/
 firefox/package/build/
 tmp/
+.sublime-grunt.cache
