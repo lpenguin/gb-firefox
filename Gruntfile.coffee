@@ -71,7 +71,7 @@ module.exports = (grunt)->
         options:
           destPrefix: 'firefox/package/data/'
         files:
-          'css/': 'pure/pure.css'
+          'css/': 'bootstrap/dist/css/bootstrap.min.css'
           'js/': 'jquery/dist/jquery.js'
 
   grunt.loadNpmTasks 'grunt-mozilla-addon-sdk'

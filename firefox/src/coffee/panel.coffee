@@ -9,7 +9,7 @@ panel = new Port self.port, ['done'], {
     document.getElementById('main-form').onsubmit = () ->
       self.port.emit 'done', {
         tags: $('#tags').val().split(","),
-        description: ""
+        description: $("#description").val()
       }
       false
 }

@@ -1,8 +1,10 @@
 {
   "name": "gb-plugins",
-  "devDependencies":{
-    "pure": "*",
+  "devDependencies": {
     "prototype.js": "*",
     "jquery": "*"
+  },
+  "dependencies": {
+    "bootstrap": "~3.2.0"
   }
 }

@@ -10,6 +10,8 @@ Api = require "api"
 {Link} = require 'models'
 
 panel = Panel
+  height: 380
+  width: 300
   contentURL: self.data.url 'panel_main.html'
   contentScriptFile: [
     self.data.url('js/port.js')
@@ -21,28 +23,28 @@ panelPort = new Port panel.port, ['init'], {
   done: ({description, tags})->
     name = tabs.activeTab.title
     url = tabs.activeTab.url
-    link = new Link({name, url, description, tags, ""})
-    getFavicon(url, (url)-> sendLink(link, "")).then((faviconUrl)-> sendLink(link, faviconUrl))
+    faviconUrl = ""
+    link = new Link({name, url, description, tags, faviconUrl})
+    sendLink link
     panel.hide()
 }
 
-sendLink = (link, faviconUrl)->
-  link.faviconUrl = faviconUrl
+sendLink = (link)->
   (Api.addLink link).execute
     success: (res)->
       console.log "success: #{JSON.stringify(res)}"
     error: (res)->
       console.log "error: #{res.statusText}"
 
-panel.on 'show', ()-> 
+panel.on 'show', ()->
   tab = tabs.activeTab
   panelPort.init({name: tab.title, url: tab.url})
 
-Hotkey
+hk = Hotkey
   combo: "accel-shift-s"
   onPress: () ->
     panel.show {position: button}
-  
+
 button = ActionButton
   id: 'main-button'
   label: 'Activate menu'
