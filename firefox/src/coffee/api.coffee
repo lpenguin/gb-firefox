@@ -4,7 +4,7 @@ describe = (e)->
     console.log "#{name}: #{value}"
 
 class ApiRequest
-  apiRoot = "http://127.0.0.1:8080/api"
+  apiRoot = require("sdk/simple-prefs").prefs.api_url
   constructor: ({@method, @params}) ->
     @request = Request({
         content: JSON.stringify @params

@@ -11,6 +11,6 @@
         "title": "Server api url",
         "description": "",
         "type": "string",
-        "value": "http://geek-bookmarks.herokuapp.com/api"
+        "value": "http://pryan.mine.bz:8080/api"
     }]
 }
