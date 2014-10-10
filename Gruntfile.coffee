@@ -1,6 +1,6 @@
 #Example: https://github.com/fczbkk/Savedeo-Extension/blob/master/Gruntfile.coffee
 module.exports = (grunt)->
-  firefoxStableVersion = "1.16"
+  firefoxStableVersion = "1.17"
   firefoxExtentionDir = 'firefox/package'
   firefoxExtentionDistDir = "#{firefoxExtentionDir}/build"
   grunt.initConfig
@@ -60,6 +60,7 @@ module.exports = (grunt)->
     copy:
       firefox:
         files:[
+          { src: 'firefox/src/js/*', dest: 'firefox/package/lib/', filter: 'isFile', flatten: true, expand: true}
           { src: 'firefox/src/layout/*', dest: 'firefox/package/data/', filter: 'isFile', flatten: true, expand: true}
           { src: 'firefox/src/css/*', dest: 'firefox/package/data/css/',  filter: 'isFile', flatten: true, expand: true}
           { src: 'firefox/src/images/*', dest: 'firefox/package/data/icons/', filter: 'isFile', flatten: true, expand: true}
@@ -71,8 +72,8 @@ module.exports = (grunt)->
         options:
           destPrefix: 'firefox/package/data/'
         files:
-          'css/': 'bootstrap/dist/css/bootstrap.min.css'
-          'js/': 'jquery/dist/jquery.js'
+          'css/': ['bootstrap/dist/css/bootstrap.min.css', 'selectize/dist/css/selectize.css']
+          'js/': ['jquery/dist/jquery.js', 'selectize/dist/js/standalone/selectize.js']
 
   grunt.loadNpmTasks 'grunt-mozilla-addon-sdk'
   grunt.loadNpmTasks 'grunt-contrib-watch'

@@ -1,5 +1,7 @@
 {ActionButton} = require "sdk/ui/button/action"
 {Panel} = require "sdk/panel"
+# {Panel} = require "./mypanel"
+
 tabs = require "sdk/tabs"
 self = require 'sdk/self'
 { getFavicon } = require("sdk/places/favicon");
@@ -17,6 +19,7 @@ panel = Panel
     self.data.url('js/port.js')
     self.data.url('js/jquery.js')
     self.data.url('js/panel.js')
+    self.data.url('js/selectize.js')
   ]
 
 panelPort = new Port panel.port, ['init'], {
@@ -29,6 +32,16 @@ panelPort = new Port panel.port, ['init'], {
     panel.hide()
 }
 
+updateTags = ({success, error})->
+  Api.tags().execute
+    success: (res)->
+      success(res)
+    error: (res)->
+      error(res)
+
+showPanel = ()->
+  panel.show {position: button}
+
 sendLink = (link)->
   (Api.addLink link).execute
     success: (res)->
@@ -38,12 +51,14 @@ sendLink = (link)->
 
 panel.on 'show', ()->
   tab = tabs.activeTab
-  panelPort.init({name: tab.title, url: tab.url})
+  updateTags
+    success: (res)->
+      panelPort.init({name: tab.title, url: tab.url, tags: res.result})
 
 hk = Hotkey
   combo: "accel-shift-s"
   onPress: () ->
-    panel.show {position: button}
+    showPanel()
 
 button = ActionButton
   id: 'main-button'
@@ -51,4 +66,4 @@ button = ActionButton
   icon:
     '32': './icons/bookmark-32.png'
   onClick: (state) ->
-    panel.show {position: button}
+    showPanel()

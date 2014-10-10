@@ -4,7 +4,9 @@ describe = (e)->
     console.log "#{name}: #{value}"
 
 class ApiRequest
-  apiRoot = require("sdk/simple-prefs").prefs.api_url
+  #apiRoot = require("sdk/simple-prefs").prefs.api_url
+  apiRoot = "http://localhost:8080/api"
+  console.log "INLINE"
   constructor: ({@method, @params}) ->
     @request = Request({
         content: JSON.stringify @params
@@ -38,6 +40,12 @@ class AddLinkRequest extends PostApiRequest
       method: "addLink"
       params: link
 
+class TagsRequest extends GetApiRequest
+  constructor: ()->
+    super
+      method: "tags"
+      params: {}
 
 
 exports.addLink = (link)-> (new AddLinkRequest link)
+exports.tags = ()-> (new TagsRequest())
