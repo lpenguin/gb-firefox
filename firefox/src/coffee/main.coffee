@@ -36,6 +36,7 @@ updateTags = ({success, error})->
   Api.tags().execute
     success: (res)->
       success(res)
+
     error: (res)->
       error(res)
 
@@ -54,6 +55,8 @@ panel.on 'show', ()->
   updateTags
     success: (res)->
       panelPort.init({name: tab.title, url: tab.url, tags: res.result})
+    error: (res)->
+      console.log "#{JSON.stringify(res)}"
 
 hk = Hotkey
   combo: "accel-shift-s"

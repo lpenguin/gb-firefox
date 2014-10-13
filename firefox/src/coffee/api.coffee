@@ -4,8 +4,7 @@ describe = (e)->
     console.log "#{name}: #{value}"
 
 class ApiRequest
-  #apiRoot = require("sdk/simple-prefs").prefs.api_url
-  apiRoot = "http://localhost:8080/api"
+  apiRoot = require("sdk/simple-prefs").prefs.api_url
   console.log "INLINE"
   constructor: ({@method, @params}) ->
     @request = Request({
@@ -14,8 +13,9 @@ class ApiRequest
         url: "#{apiRoot}/#{@method}"
         onComplete: (responce) =>
           console.log "onComplete: res #{responce.status}"
+          console.log @error
           if responce.status != 200
-            @error responce if @error?
+            @error(responce) if @error?
           else
             responce = responce.json
             throw new Error "Api error: #{responce.message}" if responce.status != "ok"
