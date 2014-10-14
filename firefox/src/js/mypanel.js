@@ -150,7 +150,7 @@ const Panel = Class({
 
     // Setup view
     let view = domPanel.make();
-
+    view.setAttribute("noautohide","true");
     panels.set(view, this);
     views.set(this, view);
 

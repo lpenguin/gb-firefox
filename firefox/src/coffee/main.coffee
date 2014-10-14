@@ -1,6 +1,6 @@
 {ActionButton} = require "sdk/ui/button/action"
-{Panel} = require "sdk/panel"
-# {Panel} = require "./mypanel"
+# {Panel} = require "sdk/panel"
+{Panel} = require "./mypanel"
 
 tabs = require "sdk/tabs"
 self = require 'sdk/self'
@@ -29,6 +29,8 @@ panelPort = new Port panel.port, ['init'], {
     faviconUrl = ""
     link = new Link({name, url, description, tags, faviconUrl})
     sendLink link
+    panel.hide()
+  cancel: ()->
     panel.hide()
 }
 
