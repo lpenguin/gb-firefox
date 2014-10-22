@@ -9,6 +9,7 @@ self = require 'sdk/self'
 {Port} = require "port"
 Api = require "api"
 {Link} = require 'models'
+apiRoot = require("sdk/simple-prefs").prefs.api_url
 
 panel = Panel
   height: 380
@@ -31,6 +32,8 @@ panelPort = new Port panel.port, ['init'], {
     panel.hide()
   cancel: ()->
     panel.hide()
+  openRoot: ()->
+    tabs.open apiRoot
 }
 
 updateTags = ({success, error})->

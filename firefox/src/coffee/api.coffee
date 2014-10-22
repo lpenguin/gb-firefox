@@ -10,7 +10,7 @@ class ApiRequest
     @request = Request({
         content: JSON.stringify @params
         contentType: "application/json"
-        url: "#{apiRoot}/#{@method}"
+        url: "#{apiRoot}/api/#{@method}"
         onComplete: (responce) =>
           console.log "onComplete: res #{responce.status}"
           console.log @error
