@@ -60,6 +60,7 @@ module.exports = (grunt)->
     copy:
       firefox:
         files:[
+          { src: 'firefox/src/package.json', dest: 'firefox/package/', filter: 'isFile', flatten: true, expand: true }
           { src: 'firefox/src/js/*', dest: 'firefox/package/lib/', filter: 'isFile', flatten: true, expand: true}
           { src: 'firefox/src/layout/*', dest: 'firefox/package/data/', filter: 'isFile', flatten: true, expand: true}
           { src: 'firefox/src/css/*', dest: 'firefox/package/data/css/',  filter: 'isFile', flatten: true, expand: true}

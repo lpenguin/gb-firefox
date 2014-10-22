@@ -1,7 +1,5 @@
 node_modules/
 bower_components/
-firefox/package/data/
-firefox/package/lib/
-firefox/package/build/
+firefox/package/
 tmp/
 .sublime-grunt.cache
