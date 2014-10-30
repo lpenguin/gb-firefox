@@ -12,21 +12,32 @@ class ApiRequest
         contentType: "application/json"
         url: "#{apiRoot}/api/#{@method}"
         onComplete: (responce) =>
-          console.log "onComplete: res #{responce.status}"
-          console.log @error
+          console.log "onComplete"
           if responce.status != 200
-            @error(responce) if @error?
+            @_responceFalied responce
           else
             responce = responce.json
-            throw new Error "Api error: #{responce.message}" if responce.status != "ok"
-            @success responce if @success?
+            if not responce.status? or responce.status != 'ok'
+              @_responceFalied responce
+            else
+              @_responceSucceed responce
       })
 
   # abstract
-  _processRequest: (request)-> throw new Error("Must override processRequest")
+  _processRequest: (request)-> throw new Error("Must override _processRequest")
 
-  execute: ({@success, @error})->
-    @_processRequest @request
+  _responceFalied: (responce)->
+    console.log "_responceFalied"
+    @reject responce
+    @error responce if @error?
+
+  _responceSucceed: (responce)->
+    console.log "_responceSucceed"
+    @resolve responce
+    @success responce if @success?
+
+  execute: (@success, @error)->
+    return new Promise (@resolve, @reject) => @_processRequest @request
 
 class GetApiRequest extends ApiRequest
   _processRequest: (request) -> request.get()
@@ -46,6 +57,12 @@ class TagsRequest extends GetApiRequest
       method: "tags"
       params: {}
 
+class FindUrl extends PostApiRequest
+  constructor: (url)->
+    super
+      method: "findUrl"
+      params: {url}
 
 exports.addLink = (link)-> (new AddLinkRequest link)
 exports.tags = ()-> (new TagsRequest())
+exports.findUrl = (url)-> new FindUrl url
