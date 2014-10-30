@@ -9,6 +9,9 @@ cancel = ()->
   console.log "Canceling"
   self.port.emit 'cancel'
 
+openRoot = ->
+  self.port.emit 'openRoot'
+
 panel = new Port self.port, ['done', 'cancel'], {
   init: ({name, url, tags, root_link})->
     $('body').keydown (event) =>
@@ -17,8 +20,10 @@ panel = new Port self.port, ['done', 'cancel'], {
 
     $("#page-name").text name
     $("#root_link").click ()->
-      self.port.emit 'openRoot'
+      openRoot()
+      cancel()
       false
+
     $select = $("#tags").selectize
       create: true
       selectOnTab: false
@@ -27,7 +32,8 @@ panel = new Port self.port, ['done', 'cancel'], {
         value: item.tag
 
     selectize = $select[0].selectize
-    selectize.focus()
+    selectize.focus(false)
+
 
     $('#main-form').submit () =>
       submit()
