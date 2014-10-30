@@ -22,19 +22,20 @@ panel = Panel
     self.data.url('js/selectize.js')
   ]
 
-panelPort = new Port panel.port, ['init'], {
+panelPort = new Port panel.port, ['init'],
   done: ({description, tags})->
+    console.log "panel done"
     name = tabs.activeTab.title
     url = tabs.activeTab.url
     faviconUrl = ""
     link = new Link({name, url, description, tags, faviconUrl})
     sendLink link
     panel.hide()
-  cancel: ()->
-    panel.hide()
-  openRoot: ()->
-    tabs.open apiRoot
-}
+
+  cancel: ()-> panel.hide()
+
+  openRoot: ()-> tabs.open apiRoot
+
 
 updateTags = ({success, error})->
   Api.tags().execute
@@ -48,6 +49,7 @@ showPanel = ()->
   panel.show {position: button}
 
 sendLink = (link)->
+  console.log "Send link"
   (Api.addLink link).execute
     success: (res)->
       console.log "success: #{JSON.stringify(res)}"

@@ -12,17 +12,23 @@ cancel = ()->
 openRoot = ->
   self.port.emit 'openRoot'
 
+$ ()->
+  $('#main-form').submit () =>
+    submit()
+    false
+
+  $("#root_link").click ()->
+    openRoot()
+    cancel()
+    false
+
+  $('body').keydown (event) =>
+    if event.key == "Esc"
+      cancel()
+
 panel = new Port self.port, ['done', 'cancel'], {
   init: ({name, url, tags, root_link})->
-    $('body').keydown (event) =>
-      if event.key == "Esc"
-        cancel()
-
     $("#page-name").text name
-    $("#root_link").click ()->
-      openRoot()
-      cancel()
-      false
 
     $select = $("#tags").selectize
       create: true
@@ -35,9 +41,7 @@ panel = new Port self.port, ['done', 'cancel'], {
     selectize.focus(false)
 
 
-    $('#main-form').submit () =>
-      submit()
-      false
+
 
 
 }
