@@ -11,6 +11,6 @@
         "title": "Server api url",
         "description": "",
         "type": "string",
-        "value": "http://localhost:8080"
+        "value": "http://pryan.mine.bz:8080"
     }]
 }
