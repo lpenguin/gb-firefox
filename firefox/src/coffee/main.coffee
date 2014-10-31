@@ -9,6 +9,8 @@ self = require 'sdk/self'
 {Port} = require "port"
 Api = require "api"
 {Link} = require 'models'
+promise = require 'sdk/core/promise'
+
 apiRoot = require("sdk/simple-prefs").prefs.api_url
 
 panel = Panel
@@ -29,37 +31,22 @@ panelPort = new Port panel.port, ['init'],
     url = tabs.activeTab.url
     faviconUrl = ""
     link = new Link({name, url, description, tags, faviconUrl})
-    sendLink link
+    Api.addLink link
     panel.hide()
 
   cancel: ()-> panel.hide()
 
   openRoot: ()-> tabs.open apiRoot
 
-
-updateTags = ({success, error})->
-  Api.tags().execute
-    success: (res)->
-      success(res)
-
-    error: (res)->
-      error(res)
-
 showPanel = ()->
   panel.show {position: button}
 
-sendLink = (link)->
-  console.log "Send link"
-  (Api.addLink link).execute
-    success: (res)->
-      console.log "success: #{JSON.stringify(res)}"
-    error: (res)->
-      console.log "error: #{res.statusText}"
-
 panel.on 'show', ()->
   tab = tabs.activeTab
-  Api.tags().execute({}).then (res)->
-    panelPort.init({name: tab.title, url: tab.url, tags: res.result})
+  promise.all([Api.tags(), Api.findUrl(tab.url)]).then (res)->
+    tags = res[0].result
+    record = res[1].result
+    panelPort.init({name: tab.title, url: tab.url, tags: tags, record:record})
 
 hk = Hotkey
   combo: "accel-shift-s"
@@ -72,4 +59,7 @@ button = ActionButton
   icon:
     '32': './icons/bookmark-32.png'
   onClick: (state) ->
-    showPanel()
+    if not panel.isShowing
+      showPanel()
+    else
+      panel.hide()
