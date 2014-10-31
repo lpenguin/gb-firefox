@@ -12,11 +12,10 @@ class ApiRequest
         contentType: "application/json"
         url: "#{apiRoot}/api/#{@method}"
         onComplete: (responce) =>
-          console.log "onComplete"
           if responce.status != 200
             @_responceFalied responce
           else
-            console.log JSON.stringify responce.json
+            console.log "apiComplete: #{JSON.stringify responce.json}"
             responce = responce.json
             if not responce or not responce.status? or responce.status != 'ok'
               @_responceFalied responce or 'responce is null'
@@ -28,14 +27,10 @@ class ApiRequest
   _processRequest: (request)-> throw new Error("Must override _processRequest")
 
   _responceFalied: (responce)->
-    console.log "_responceFalied"
     @reject responce
-    # @error responce if @error?
 
   _responceSucceed: (responce)->
-    console.log "_responceSucceed"
     @resolve responce
-    # @success responce if @success?
 
   execute: ()->
     return new Promise (@resolve, @reject) => @_processRequest @request
@@ -65,6 +60,6 @@ class FindUrl extends PostApiRequest
       params:
         url: url
 
-exports.addLink = (link)-> (new AddLinkRequest link)
-exports.tags = ()-> (new TagsRequest())
-exports.findUrl = (url)-> new FindUrl url
+exports.addLink = (link)-> (new AddLinkRequest link).execute()
+exports.tags = ()-> (new TagsRequest()).execute()
+exports.findUrl = (url)-> (new FindUrl url).execute()

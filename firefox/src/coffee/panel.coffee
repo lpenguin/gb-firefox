@@ -27,9 +27,10 @@ $ ()->
       cancel()
 
 panel = new Port self.port, ['done', 'cancel'], {
-  init: ({name, url, tags, root_link, description, selected_tags})->
+  init: ({name, url, tags, root_link, description, record})->
     $("#page-name").text name
-
+    $("#description").val if record? then record.description else ""
+    
     $select = $("#tags").selectize
       create: true
       selectOnTab: false
@@ -39,7 +40,7 @@ panel = new Port self.port, ['done', 'cancel'], {
 
     selectize = $select[0].selectize
     selectize.focus(false)
-    selectize.addItems(selected_tags)
+    selectize.addItems(if record? then record.tags else [])
 
 
 
