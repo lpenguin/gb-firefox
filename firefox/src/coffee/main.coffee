@@ -58,9 +58,11 @@ sendLink = (link)->
 
 panel.on 'show', ()->
   tab = tabs.activeTab
-  Api.tags().execute({}).then (res)->
-    console.log "res: #{JSON.stringify(res)}"
+  Api.tags().execute({}).then((res)->
+    Api.findUrl(tab.url).execute({})
+  ).then((res)->
     panelPort.init({name: tab.title, url: tab.url, tags: res.result})
+  )
 
 hk = Hotkey
   combo: "accel-shift-s"

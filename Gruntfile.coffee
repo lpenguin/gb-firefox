@@ -89,7 +89,7 @@ module.exports = (grunt)->
     'mozilla-cfx'
   ]
 
-  grunt.registerTask 'default', ['watch:default']
+  grunt.registerTask 'default', ['firefox']
   grunt.registerTask 'dev', [
     'coffee:default'
   ]

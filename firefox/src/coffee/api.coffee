@@ -16,9 +16,10 @@ class ApiRequest
           if responce.status != 200
             @_responceFalied responce
           else
+            console.log JSON.stringify responce.json
             responce = responce.json
-            if not responce.status? or responce.status != 'ok'
-              @_responceFalied responce
+            if not responce or not responce.status? or responce.status != 'ok'
+              @_responceFalied responce or 'responce is null'
             else
               @_responceSucceed responce
       })
@@ -29,14 +30,14 @@ class ApiRequest
   _responceFalied: (responce)->
     console.log "_responceFalied"
     @reject responce
-    @error responce if @error?
+    # @error responce if @error?
 
   _responceSucceed: (responce)->
     console.log "_responceSucceed"
     @resolve responce
-    @success responce if @success?
+    # @success responce if @success?
 
-  execute: (@success, @error)->
+  execute: ()->
     return new Promise (@resolve, @reject) => @_processRequest @request
 
 class GetApiRequest extends ApiRequest
@@ -61,7 +62,8 @@ class FindUrl extends PostApiRequest
   constructor: (url)->
     super
       method: "findUrl"
-      params: {url}
+      params:
+        url: url
 
 exports.addLink = (link)-> (new AddLinkRequest link)
 exports.tags = ()-> (new TagsRequest())
